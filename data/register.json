@@ -1,0 +1,88 @@
+{
+  "test_register_data": [
+    {
+      "title": "全部必填参数，注册成功",
+      "status_code":200,
+      "status":200,
+      "description": "注册成功",
+      "phone": "15851779036",
+      "password": "xq123456",
+      "img_code": 8888,
+      "phone_code": 666666,
+      "dy_server": "on",
+      "invite_phone": ""
+    },
+    {
+      "title": "全部参数，注册成功",
+      "status_code":200,
+      "status":200,
+      "description": "注册成功",
+      "phone": "15851779037",
+      "password": "xq123456",
+      "img_code": 8888,
+      "phone_code": 666666,
+      "dy_server": "on",
+      "invite_phone": "19651775177"
+    },
+    {
+      "title": "图片验证码错误，注册失败",
+      "status_code":200,
+      "status":100,
+      "description": "验证码错误!",
+      "phone": "15851779038",
+      "password": "xq123456",
+      "img_code": 8889,
+      "phone_code": 666666,
+      "dy_server": "on",
+      "invite_phone": "19651775177"
+    },
+    {
+      "title": "手机验证码错误，注册失败",
+      "status_code":200,
+      "status":100,
+      "description": "验证码错误",
+      "phone": "15851779038",
+      "password": "xq123456",
+      "img_code": 8888,
+      "phone_code": 666667,
+      "dy_server": "on",
+      "invite_phone": "19651775177"
+    },
+    {
+      "title": "手机号已存在，注册失败",
+      "status_code":200,
+      "status":100,
+      "description": "手机已存在!",
+      "phone": "15851779036",
+      "password": "xq123456",
+      "img_code": 8888,
+      "phone_code": 666666,
+      "dy_server": "on",
+      "invite_phone": "19651775177"
+    },
+    {
+      "title": "密码为空，注册失败",
+      "status_code":200,
+      "status":100,
+      "description": "密码不能为空",
+      "phone": "15851779039",
+      "password": "",
+      "img_code": 8888,
+      "phone_code": 666666,
+      "dy_server": "on",
+      "invite_phone": "19651775177"
+    },
+    {
+      "title": "未同意条款，注册失败",
+      "status_code":200,
+      "status":100,
+      "description": "密码不能为空",
+      "phone": "15851779040",
+      "password": "xq123456",
+      "img_code": 8888,
+      "phone_code": 666666,
+      "dy_server": "off",
+      "invite_phone": "19651775177"
+    }
+  ]
+}

@@ -1,0 +1,1601 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>金融项目测试报告</title>
+    <meta name="generator" content="HTMLTestRunner 0.8.2"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    
+<style type="text/css" media="screen">
+body        { font-family: verdana, arial, helvetica, sans-serif; font-size: 80%; }
+table       { font-size: 100%; }
+pre         { }
+
+/* -- heading ---------------------------------------------------------------------- */
+h1 {
+	font-size: 16pt;
+	color: gray;
+}
+.heading {
+    margin-top: 0ex;
+    margin-bottom: 1ex;
+}
+
+.heading .attribute {
+    margin-top: 1ex;
+    margin-bottom: 0;
+}
+
+.heading .description {
+    margin-top: 4ex;
+    margin-bottom: 6ex;
+}
+
+/* -- css div popup ------------------------------------------------------------------------ */
+a.popup_link {
+}
+
+a.popup_link:hover {
+    color: red;
+}
+
+.popup_window {
+    display: none;
+    position: relative;
+    left: 0px;
+    top: 0px;
+    /*border: solid #627173 1px; */
+    padding: 10px;
+    background-color: #E6E6D6;
+    font-family: "Lucida Console", "Courier New", Courier, monospace;
+    text-align: left;
+    font-size: 8pt;
+    width: 500px;
+}
+
+}
+/* -- report ------------------------------------------------------------------------ */
+#show_detail_line {
+    margin-top: 3ex;
+    margin-bottom: 1ex;
+}
+#result_table {
+    width: 80%;
+    border-collapse: collapse;
+    border: 1px solid #777;
+}
+#header_row {
+    font-weight: bold;
+    color: white;
+    background-color: #777;
+}
+#result_table td {
+    border: 1px solid #777;
+    padding: 2px;
+}
+#total_row  { font-weight: bold; }
+.passClass  { background-color: #6c6; }
+.failClass  { background-color: #c60; }
+.errorClass { background-color: #c00; }
+.passCase   { color: #6c6; }
+.failCase   { color: #c60; font-weight: bold; }
+.errorCase  { color: #c00; font-weight: bold; }
+.hiddenRow  { display: none; }
+.testcase   { margin-left: 2em; }
+
+
+/* -- ending ---------------------------------------------------------------------- */
+#ending {
+}
+
+</style>
+
+</head>
+<body>
+<script language="javascript" type="text/javascript"><!--
+output_list = Array();
+
+/* level - 0:Summary; 1:Failed; 2:All */
+function showCase(level) {
+    trs = document.getElementsByTagName("tr");
+    for (var i = 0; i < trs.length; i++) {
+        tr = trs[i];
+        id = tr.id;
+        if (id.substr(0,2) == 'ft') {
+            if (level < 1) {
+                tr.className = 'hiddenRow';
+            }
+            else {
+                tr.className = '';
+            }
+        }
+        if (id.substr(0,2) == 'pt') {
+            if (level > 1) {
+                tr.className = '';
+            }
+            else {
+                tr.className = 'hiddenRow';
+            }
+        }
+    }
+}
+
+
+function showClassDetail(cid, count) {
+    var id_list = Array(count);
+    var toHide = 1;
+    for (var i = 0; i < count; i++) {
+        tid0 = 't' + cid.substr(1) + '.' + (i+1);
+        tid = 'f' + tid0;
+        tr = document.getElementById(tid);
+        if (!tr) {
+            tid = 'p' + tid0;
+            tr = document.getElementById(tid);
+        }
+        id_list[i] = tid;
+        if (tr.className) {
+            toHide = 0;
+        }
+    }
+    for (var i = 0; i < count; i++) {
+        tid = id_list[i];
+        if (toHide) {
+            document.getElementById('div_'+tid).style.display = 'none'
+            document.getElementById(tid).className = 'hiddenRow';
+        }
+        else {
+            document.getElementById(tid).className = '';
+        }
+    }
+}
+
+
+function showTestDetail(div_id){
+    var details_div = document.getElementById(div_id)
+    var displayState = details_div.style.display
+    // alert(displayState)
+    if (displayState != 'block' ) {
+        displayState = 'block'
+        details_div.style.display = 'block'
+    }
+    else {
+        details_div.style.display = 'none'
+    }
+}
+
+
+function html_escape(s) {
+    s = s.replace(/&/g,'&amp;');
+    s = s.replace(/</g,'&lt;');
+    s = s.replace(/>/g,'&gt;');
+    return s;
+}
+
+/* obsoleted by detail in <div>
+function showOutput(id, name) {
+    var w = window.open("", //url
+                    name,
+                    "resizable,scrollbars,status,width=800,height=450");
+    d = w.document;
+    d.write("<pre>");
+    d.write(html_escape(output_list[id]));
+    d.write("\n");
+    d.write("<a href='javascript:window.close()'>close</a>\n");
+    d.write("</pre>\n");
+    d.close();
+}
+*/
+--></script>
+
+<div class='heading'>
+<h1>金融项目测试报告</h1>
+<p class='attribute'><strong>Start Time:</strong> 2022-02-23 16:50:23</p>
+<p class='attribute'><strong>Duration:</strong> 0:01:05.986679</p>
+<p class='attribute'><strong>Status:</strong> Pass 37 Failure 12 Error 2</p>
+
+<p class='description'></p>
+</div>
+
+
+
+<p id='show_detail_line'>Show
+<a href='javascript:showCase(0)'>Summary</a>
+<a href='javascript:showCase(1)'>Failed</a>
+<a href='javascript:showCase(2)'>All</a>
+</p>
+<table id='result_table'>
+<colgroup>
+<col align='left' />
+<col align='right' />
+<col align='right' />
+<col align='right' />
+<col align='right' />
+<col align='right' />
+</colgroup>
+<tr id='header_row'>
+    <td>Test Group/Test case</td>
+    <td>Count</td>
+    <td>Pass</td>
+    <td>Fail</td>
+    <td>Error</td>
+    <td>View</td>
+</tr>
+
+<tr class='failClass'>
+    <td>script.test_register_login.TestRegisterLogin</td>
+    <td>19</td>
+    <td>17</td>
+    <td>2</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c1',19)">Detail</a></td>
+</tr>
+
+<tr id='pt1.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test01_img_code_random_0</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt1.2' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test01_img_code_random_1</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt1.3' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test01_img_code_random_2_</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt1.4' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test01_img_code_random_3_gqwtnzfuy</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt1.5' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test02_phone_code_0</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.5')" >
+        pass</a>
+
+    <div id='div_pt1.5' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt1.5').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt1.5: {"status":200,"description":"短信发送成功"}
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt1.6' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test02_phone_code_1</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.6')" >
+        pass</a>
+
+    <div id='div_pt1.6' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt1.6').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt1.6: {"status":100,"description":"图片验证码错误"}
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt1.7' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test02_phone_code_2</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.7')" >
+        pass</a>
+
+    <div id='div_pt1.7' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt1.7').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt1.7: {"status":100}
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt1.8' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test02_phone_code_3</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.8')" >
+        pass</a>
+
+    <div id='div_pt1.8' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt1.8').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt1.8: {"status":100,"description":"图片验证码错误"}
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt1.9' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test02_phone_code_4</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.9')" >
+        pass</a>
+
+    <div id='div_pt1.9' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt1.9').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt1.9: {"status":100,"description":"图片验证码错误"}
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt1.10' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test03_register_0</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.10')" >
+        pass</a>
+
+    <div id='div_pt1.10' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt1.10').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt1.10: {"status":200,"data":{"isLogin":"1"},"description":"注册成功"}
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt1.11' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test03_register_1</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.11')" >
+        pass</a>
+
+    <div id='div_pt1.11' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt1.11').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt1.11: {"status":200,"data":{"isLogin":"1"},"description":"注册成功"}
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt1.12' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test03_register_2</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.12')" >
+        pass</a>
+
+    <div id='div_pt1.12' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt1.12').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt1.12: {"status":100,"description":"验证码错误!"}
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt1.13' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test03_register_3</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.13')" >
+        pass</a>
+
+    <div id='div_pt1.13' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt1.13').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt1.13: {"status":100,"description":"验证码错误"}
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt1.14' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test03_register_4</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.14')" >
+        pass</a>
+
+    <div id='div_pt1.14' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt1.14').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt1.14: {"status":100,"description":"手机已存在!"}
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft1.15' class='none'>
+    <td class='failCase'><div class='testcase'>test03_register_5</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft1.15')" >
+        fail</a>
+
+    <div id='div_ft1.15' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft1.15').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft1.15: {"status":200,"data":{"isLogin":"1"},"description":"注册成功"}
+Traceback (most recent call last):
+  File "C:\Program Files\python37\lib\site-packages\parameterized\parameterized.py", line 533, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "C:\Work\SoftwareTest\4-python\code\P2P_API_Test\script\test_register_login.py", line 46, in test03_register
+    utils.assert_utils(self, response, status_code, status, description)
+  File "C:\Work\SoftwareTest\4-python\code\P2P_API_Test\utils.py", line 62, in assert_utils
+    self.assertEqual(status, response.json().get("status"))
+AssertionError: 100 != 200
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft1.16' class='none'>
+    <td class='failCase'><div class='testcase'>test03_register_6</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft1.16')" >
+        fail</a>
+
+    <div id='div_ft1.16' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft1.16').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft1.16: {"status":200,"data":{"isLogin":"1"},"description":"注册成功"}
+Traceback (most recent call last):
+  File "C:\Program Files\python37\lib\site-packages\parameterized\parameterized.py", line 533, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "C:\Work\SoftwareTest\4-python\code\P2P_API_Test\script\test_register_login.py", line 46, in test03_register
+    utils.assert_utils(self, response, status_code, status, description)
+  File "C:\Work\SoftwareTest\4-python\code\P2P_API_Test\utils.py", line 62, in assert_utils
+    self.assertEqual(status, response.json().get("status"))
+AssertionError: 100 != 200
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt1.17' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test04_login_0</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.17')" >
+        pass</a>
+
+    <div id='div_pt1.17' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt1.17').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt1.17: {"status":200,"description":"登录成功"}
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt1.18' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test04_login_1</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.18')" >
+        pass</a>
+
+    <div id='div_pt1.18' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt1.18').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt1.18: {"status":100,"description":"用户不存在"}
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt1.19' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test05_login_fail_02</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.19')" >
+        pass</a>
+
+    <div id='div_pt1.19' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt1.19').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt1.19: {"status":100,"data":{"login_error":2},"description":"密码错误1次,达到3次将锁定账户"}
+{"status":100,"data":{"login_error":3},"description":"密码错误2次,达到3次将锁定账户"}
+{"status":100,"description":"由于连续输入错误密码达到上限，账号已被锁定，请于1.0分钟后重新登录"}
+{"status":100,"description":"由于连续输入错误密码达到上限，账号已被锁定，请于1.0分钟后重新登录"}
+{"status":200,"description":"登录成功"}
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='failClass'>
+    <td>script.test_certified_account_open.TestCertifiedAccountOpen</td>
+    <td>9</td>
+    <td>5</td>
+    <td>4</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c2',9)">Detail</a></td>
+</tr>
+
+<tr id='pt2.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test01_certified_0_15851779031</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt2.1')" >
+        pass</a>
+
+    <div id='div_pt2.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt2.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt2.1: {"status":200,"description":"登录成功"}
+{"status":200,"data":{"card_id":"350****763","realname":"小**"},"description":"提交成功!"}
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft2.2' class='none'>
+    <td class='failCase'><div class='testcase'>test01_certified_1_15851779031</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft2.2')" >
+        fail</a>
+
+    <div id='div_ft2.2' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft2.2').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft2.2: {"status":200,"description":"登录成功"}
+{"status":200,"data":{"card_id":"350****763","realname":"小**"},"description":"提交成功!"}
+Traceback (most recent call last):
+  File "C:\Program Files\python37\lib\site-packages\parameterized\parameterized.py", line 533, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "C:\Work\SoftwareTest\4-python\code\P2P_API_Test\script\test_certified_account_open.py", line 28, in test01_certified
+    utils.assert_utils(self, response, status_code, status, description)
+  File "C:\Work\SoftwareTest\4-python\code\P2P_API_Test\utils.py", line 61, in assert_utils
+    self.assertEqual(status_code, response.status_code)
+AssertionError: 100 != 200
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft2.3' class='none'>
+    <td class='failCase'><div class='testcase'>test01_certified_2_15851779032</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft2.3')" >
+        fail</a>
+
+    <div id='div_ft2.3' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft2.3').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft2.3: {"status":200,"description":"登录成功"}
+{"status":200,"data":{"card_id":"ERR****ROR","realname":"金**"},"description":"提交成功!"}
+Traceback (most recent call last):
+  File "C:\Program Files\python37\lib\site-packages\parameterized\parameterized.py", line 533, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "C:\Work\SoftwareTest\4-python\code\P2P_API_Test\script\test_certified_account_open.py", line 28, in test01_certified
+    utils.assert_utils(self, response, status_code, status, description)
+  File "C:\Work\SoftwareTest\4-python\code\P2P_API_Test\utils.py", line 61, in assert_utils
+    self.assertEqual(status_code, response.status_code)
+AssertionError: 100 != 200
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft2.4' class='none'>
+    <td class='failCase'><div class='testcase'>test01_certified_3_15851779032</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft2.4')" >
+        fail</a>
+
+    <div id='div_ft2.4' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft2.4').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft2.4: {"status":200,"description":"登录成功"}
+{"status":200,"data":{"card_id":"ERR****ROR","realname":"金**"},"description":"提交成功!"}
+Traceback (most recent call last):
+  File "C:\Program Files\python37\lib\site-packages\parameterized\parameterized.py", line 533, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "C:\Work\SoftwareTest\4-python\code\P2P_API_Test\script\test_certified_account_open.py", line 28, in test01_certified
+    utils.assert_utils(self, response, status_code, status, description)
+  File "C:\Work\SoftwareTest\4-python\code\P2P_API_Test\utils.py", line 61, in assert_utils
+    self.assertEqual(status_code, response.status_code)
+AssertionError: 100 != 200
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft2.5' class='none'>
+    <td class='failCase'><div class='testcase'>test01_certified_4_15851779032</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft2.5')" >
+        fail</a>
+
+    <div id='div_ft2.5' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft2.5').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft2.5: {"status":200,"description":"登录成功"}
+{"status":200,"data":{"card_id":"350****94X","realname":"金**"},"description":"提交成功!"}
+Traceback (most recent call last):
+  File "C:\Program Files\python37\lib\site-packages\parameterized\parameterized.py", line 533, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "C:\Work\SoftwareTest\4-python\code\P2P_API_Test\script\test_certified_account_open.py", line 28, in test01_certified
+    utils.assert_utils(self, response, status_code, status, description)
+  File "C:\Work\SoftwareTest\4-python\code\P2P_API_Test\utils.py", line 61, in assert_utils
+    self.assertEqual(status_code, response.status_code)
+AssertionError: 100 != 200
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt2.6' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test02_get_certified_info_success</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt2.6')" >
+        pass</a>
+
+    <div id='div_pt2.6' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt2.6').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt2.6: {"is_email_open":"-1","lastlogin_time":"1645606289","group_status":"","is_auth_user":"-1","is_realname_open":"2","is_corp":"-1","business_license":"","card_id":"350****763","realname":"小**","isCert":"2","realname_card":"1","pay_pwd":"","phone":"158****9031","realname_status":"-2","trustType":"chinapnr","pwd":"1","email":"","is_trust":"-1"}
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt2.7' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test03_get_certified_info_fail</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt2.7')" >
+        pass</a>
+
+    <div id='div_pt2.7' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt2.7').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt2.7: {"status":100}
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt2.8' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test04_get_account_open</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt2.8')" >
+        pass</a>
+
+    <div id='div_pt2.8' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt2.8').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt2.8: {"status":200,"description":{"form":"\u003cform name\u003d\u0027easypaysubmit\u0027 id\u003d\u0027easypaysubmit\u0027 target\u003d\u0027_blank\u0027 method\u003d\u0027post\u0027 action\u003d\u0027http://121.43.169.97:8000/muser/publicRequests\u0027\u003e\u003cinput name\u003d\u0027Version\u0027 type\u003d\u0027hidden\u0027 value\u003d\u002710\u0027/\u003e\u003cinput name\u003d\u0027CmdId\u0027 type\u003d\u0027hidden\u0027 value\u003d\u0027UserRegister\u0027/\u003e\u003cinput name\u003d\u0027MerCustId\u0027 type\u003d\u0027hidden\u0027 value\u003d\u00276000060007313892\u0027/\u003e\u003cinput name\u003d\u0027BgRetUrl\u0027 type\u003d\u0027hidden\u0027 value\u003d\u0027https://www.baidu.com/\u0027/\u003e\u003cinput name\u003d\u0027RetUrl\u0027 type\u003d\u0027hidden\u0027 value\u003d\u0027http://user-p2p-test.itheima.net/trust/chinapnr/register/return/22022316512987148006\u0027/\u003e\u003cinput name\u003d\u0027UsrId\u0027 type\u003d\u0027hidden\u0027 value\u003d\u0027\u0027/\u003e\u003cinput name\u003d\u0027UsrName\u0027 type\u003d\u0027hidden\u0027 value\u003d\u0027\u0027/\u003e\u003cinput name\u003d\u0027IdType\u0027 type\u003d\u0027hidden\u0027 value\u003d\u002700\u0027/\u003e\u003cinput name\u003d\u0027IdNo\u0027 type\u003d\u0027hidden\u0027 value\u003d\u0027350781196403078763\u0027/\u003e\u003cinput name\u003d\u0027UsrMp\u0027 type\u003d\u0027hidden\u0027 value\u003d\u002715851779031\u0027/\u003e\u003cinput name\u003d\u0027UsrEmail\u0027 type\u003d\u0027hidden\u0027 value\u003d\u0027\u0027/\u003e\u003cinput name\u003d\u0027MerPriv\u0027 type\u003d\u0027hidden\u0027 value\u003d\u002722022316512987148006\u0027/\u003e\u003cinput name\u003d\u0027ChkValue\u0027 type\u003d\u0027hidden\u0027 value\u003d\u0027-101\u0027/\u003e\u003cinput name\u003d\u0027CharSet\u0027 type\u003d\u0027hidden\u0027 value\u003d\u0027UTF-8\u0027/\u003e\u003c/form\u003e\u003cscript\u003edocument.forms[\u0027easypaysubmit\u0027].submit();\u003c/script\u003e"}}
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt2.9' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test05_get_third_party_account_open</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt2.9')" >
+        pass</a>
+
+    <div id='div_pt2.9' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt2.9').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt2.9: ['http://121.43.169.97:8000/muser/publicRequests', {'Version': '10', 'CmdId': 'UserRegister', 'MerCustId': '6000060007313892', 'BgRetUrl': 'https://www.baidu.com/', 'RetUrl': 'http://user-p2p-test.itheima.net/trust/chinapnr/register/return/22022316513001816506', 'UsrId': "'/&gt;&lt;input name='UsrName' type='hidden' value='", 'IdType': '00', 'IdNo': '350781196403078763', 'UsrMp': '15851779031', 'UsrEmail': "'/&gt;&lt;input name='MerPriv' type='hidden' value='22022316513001816506", 'ChkValue': '-101', 'CharSet': 'UTF-8'}]
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='errorClass'>
+    <td>script.test_recharge.TestRecharge</td>
+    <td>8</td>
+    <td>6</td>
+    <td>1</td>
+    <td>1</td>
+    <td><a href="javascript:showClassDetail('c3',8)">Detail</a></td>
+</tr>
+
+<tr id='pt3.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test01_get_recharge_img_code_0</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt3.1')" >
+        pass</a>
+
+    <div id='div_pt3.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt3.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt3.1: ���� JFIF      �� C 		
+ $.' ",#(7),01444'9=82&lt;.342�� C			2!!22222222222222222222222222222222222222222222222222��  $ d" ��           	
+�� �   } !1AQa"q2���#B��R��$3br�	
+%&amp;'()*456789:CDEFGHIJSTUVWXYZcdefghijstuvwxyz���������������������������������������������������������������������������        	
+�� �  w !1AQaq"2�B����	#3R�br�
+$4�%�&amp;'()*56789:CDEFGHIJSTUVWXYZcdefghijstuvwxyz��������������������������������������������������������������������������   ? ���c��]�!��ۜg8�{LЭu��-\�ˋ��?x�#��cε/5+��K�5��##Cg����F0FI�u��M']��n��3Pر&amp;dQ+@�v����׊��]���c{�RE�i7bI� �E㥳1ɐq������u9�޻um�Ij�� !�^ZM�
+�a��$�
+�7w���5K+Y�&amp;��T*ܐN2~� �]���M�i��\�����ۃ�z� ����W�	�4�S-�+mw�&lt;����mv���b=N��(� 8���_ۼϹ�,�,La�u�ӊ�-��v��x��MՊ��X�O0�����k_A��d�o-.�g�$B��67#�~t�uk���N�L�Ed*ѹS���$�Fq�FNg��wo���-ش�
+�&lt;�c�yϥs�$�f���f����yL��c&lt;��⣷�ՓH����Jd��C��t۞�ȣ��s4�JRG�Դ���l�7��I&lt;���Cm=B����w��%3ؙ�/�yn �X���e|���
+�\�j����-Ώ&gt;�yj�c��#?6{������\6p�l	�e��ɇ\���郑�'�U?wVi+k}M�?P7vh��7��S��zz��Dg�nZQ�sGp�!9e��t� ������βlU�t�fTf�F�#9_L������������ԁ�G=HY�&amp;�_�F�6��UIn���A#��\!?�T5��tk�TL���K���r��&lt;�ry�C�/Mխ��pꅡ���c}��$t��G�k�1����dW.��V�S���^x84˃��G4�&amp;�d�$J�ma	 1�O����b+5��ђI��.��������F���;����#�H����;V檷Rhw��I\�H�ȥw&gt;�¯&lt;��p9�`�h��@Ѭ��Ϯ2� �}q��K.�p�ho�����M˲����[��R��Z"�$䜌��^=i�{�S��[x�KHa1ۼ��&amp;Ks���1�����4��"��;q�a���c�O����~�pm��n.�V/�ǾI�`���I	��ڻq�t�kK��Nf�!Y|�RYq�ۛ�3� ����8�cW��8��[� ������9��׹�e��hE��X�X�)d��'�� c�H��$d�Yh�6%^8wL���'�ON��:�^1V"��r����[��Ӥ�.��y?p������y��8��xV�����!���!H�������a������:m֣��؛V�,ю�#&lt;gל�*��.�]�,�&lt;�|��ؓoJ�&gt;��Ol�	iR_�5�������@[��h�u#�Oj���-b���t� ,�R���T�s�������0��ۂ#�p3����O4���ڴ���һ���ǰ����+r��i.�vCV8ѝ�ZF��8'���
+e��v�okpB�v8�*�~ �*@��uI�#�ZE��s&amp;�xo��9��Ү�i��\��0��� �UI{�{�n�{�]R[;��E�����a�Q��2WF3��a��v:T&amp;+X�Rr�G-�&lt;���z��Ek_Gʶ-�E�EPEPEP��
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt3.2' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test01_get_recharge_img_code_1</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt3.2')" >
+        pass</a>
+
+    <div id='div_pt3.2' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt3.2').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt3.2: ���� JFIF      �� C 		
+ $.' ",#(7),01444'9=82&lt;.342�� C			2!!22222222222222222222222222222222222222222222222222��  $ d" ��           	
+�� �   } !1AQa"q2���#B��R��$3br�	
+%&amp;'()*456789:CDEFGHIJSTUVWXYZcdefghijstuvwxyz���������������������������������������������������������������������������        	
+�� �  w !1AQaq"2�B����	#3R�br�
+$4�%�&amp;'()*56789:CDEFGHIJSTUVWXYZcdefghijstuvwxyz��������������������������������������������������������������������������   ? �zƵE֚i���p&gt;�����.�Z�Κu����y� [郏�r:�]��[]zX�I���I$�}���,���Y4Y� �k����O�a��a�^}����9��������A��7�w�S'��
+0rq�C��=��Ȅɭ^N_i�3�Wb���9'�rG���=r+{Y$e�����8Jc[���ڍ��X�'�v�r:�a�� �?L�xn���SҮD�2�y$�n1��56����$�)m�(�?��k?Z���y-"�|7�O&lt;u�:��XYG��f;��ژ48Z��*~wr9������'{"��Zf� TU�b7Ǒ�H$�BG�M����L�g��4Y��A傐q�x8���Qi�K-��WZH�`w�;��M�ZL @`o*,3�����\E䞈�&amp;�e�dނ|ǖG
+B��G8&lt;�zFpq��4K;k�e�0��]����*8�đ�g�ۊ�\�0A�(���Ŷ=ɹ�1# �C|�$d��)�\jD����2�Y�!ːt�s��z*����D[�2m����n\G��(�w�\i��f��K ���!IU��RO��,#�G��3L���.����;dUq�d�Q��kjx«2���A�C߂Z��7�g��t}�ǯ��T۾ŷ+��N�O�y#��6��&amp;�Lcq�3�j֤&lt;�9L/���ҕR	�}8�ɕ�h$�P#��@�NO���`���d�Z�xT�q��� �&gt;��P��@mu3�uhm��&gt;M�h�U�,s����2&gt;��K3_j)z�`�.L3d��8'��qV�͓\:1ġT��d��N�{��U��&lt;�����M=���r�8�!H�J���g��ی���� �@h�x�U�w��'�����G{sl-V5k�d��AfT�̤)\��܊H-5[�� M�Y�Wi���v㓻?/#�g��4Z�[�XEi���｟�#]���{�ׁҤG�o$��Ȁ0)9m�����79���i����J$�!��$�ڬ�r���ŏð���e����
+�� 8�KkH,��aGs��MMEU�IQADO��H�S&lt; �0 �Fq��Gl�-P���EPQN��o�8ˤҪ���̀��8��k���./����ذ�+/�0Tc����(�jk%�e4�;����~d�4�(��cD��QE(�� (�� ��
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt3.3' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test01_get_recharge_img_code_2_</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt3.3')" >
+        pass</a>
+
+    <div id='div_pt3.3' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt3.3').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt3.3: &lt;!doctype html&gt;&lt;html lang="en"&gt;&lt;head&gt;&lt;title&gt;HTTP Status 404 – Not Found&lt;/title&gt;&lt;style type="text/css"&gt;body {font-family:Tahoma,Arial,sans-serif;} h1, h2, h3, b {color:white;background-color:#525D76;} h1 {font-size:22px;} h2 {font-size:16px;} h3 {font-size:14px;} p {font-size:12px;} a {color:black;} .line {height:1px;background-color:#525D76;border:none;}&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;h1&gt;HTTP Status 404 – Not Found&lt;/h1&gt;&lt;hr class="line" /&gt;&lt;p&gt;&lt;b&gt;Type&lt;/b&gt; Status Report&lt;/p&gt;&lt;p&gt;&lt;b&gt;Message&lt;/b&gt; /common/public/verifycode/&lt;/p&gt;&lt;p&gt;&lt;b&gt;Description&lt;/b&gt; The origin server did not find a current representation for the target resource or is not willing to disclose that one exists.&lt;/p&gt;&lt;hr class="line" /&gt;&lt;h3&gt;Apache Tomcat/7.0.99&lt;/h3&gt;&lt;/body&gt;&lt;/html&gt;
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt3.4' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test01_get_recharge_img_code_3_gqwtnzfuy</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt3.4')" >
+        pass</a>
+
+    <div id='div_pt3.4' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt3.4').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt3.4: &lt;!doctype html&gt;&lt;html lang="en"&gt;&lt;head&gt;&lt;title&gt;HTTP Status 400 – Bad Request&lt;/title&gt;&lt;style type="text/css"&gt;body {font-family:Tahoma,Arial,sans-serif;} h1, h2, h3, b {color:white;background-color:#525D76;} h1 {font-size:22px;} h2 {font-size:16px;} h3 {font-size:14px;} p {font-size:12px;} a {color:black;} .line {height:1px;background-color:#525D76;border:none;}&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;h1&gt;HTTP Status 400 – Bad Request&lt;/h1&gt;&lt;hr class="line" /&gt;&lt;p&gt;&lt;b&gt;Type&lt;/b&gt; Status Report&lt;/p&gt;&lt;p&gt;&lt;b&gt;Description&lt;/b&gt; The server cannot or will not process the request due to something that is perceived to be a client error (e.g., malformed request syntax, invalid request message framing, or deceptive request routing).&lt;/p&gt;&lt;hr class="line" /&gt;&lt;h3&gt;Apache Tomcat/7.0.99&lt;/h3&gt;&lt;/body&gt;&lt;/html&gt;
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft3.5' class='none'>
+    <td class='failCase'><div class='testcase'>test02_recharge_0_15851779031</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft3.5')" >
+        fail</a>
+
+    <div id='div_ft3.5' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft3.5').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft3.5: {"status":100}
+Traceback (most recent call last):
+  File "C:\Program Files\python37\lib\site-packages\parameterized\parameterized.py", line 533, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "C:\Work\SoftwareTest\4-python\code\P2P_API_Test\script\test_recharge.py", line 37, in test02_recharge
+    self.assertEqual(status, response.json().get("status"))
+AssertionError: 200 != 100
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt3.6' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test02_recharge_1_15851779031</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt3.6')" >
+        pass</a>
+
+    <div id='div_pt3.6' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt3.6').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt3.6: {"status":100,"description":"验证码错误"}
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt3.7' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test02_recharge_2_15851779031</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt3.7')" >
+        pass</a>
+
+    <div id='div_pt3.7' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt3.7').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt3.7: {"status":100,"description":"验证码错误"}
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft3.8' class='none'>
+    <td class='errorCase'><div class='testcase'>test03_get_third_party_recharge</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft3.8')" >
+        error</a>
+
+    <div id='div_ft3.8' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft3.8').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft3.8: Traceback (most recent call last):
+  File "C:\Work\SoftwareTest\4-python\code\P2P_API_Test\script\test_recharge.py", line 47, in test03_get_third_party_recharge
+    data = utils.get_third_party_data(response)
+  File "C:\Work\SoftwareTest\4-python\code\P2P_API_Test\utils.py", line 70, in get_third_party_data
+    form = response.json().get("description").get("form")
+AttributeError: 'NoneType' object has no attribute 'get'
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='errorClass'>
+    <td>script.test_investment_manage.TestInvestmentManage</td>
+    <td>9</td>
+    <td>6</td>
+    <td>2</td>
+    <td>1</td>
+    <td><a href="javascript:showClassDetail('c4',9)">Detail</a></td>
+</tr>
+
+<tr id='ft4.1' class='none'>
+    <td class='failCase'><div class='testcase'>test01_investment_0_15851779031</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft4.1')" >
+        fail</a>
+
+    <div id='div_ft4.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft4.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft4.1: {"status":100,"description":"可用余额不足!"}
+Traceback (most recent call last):
+  File "C:\Program Files\python37\lib\site-packages\parameterized\parameterized.py", line 533, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "C:\Work\SoftwareTest\4-python\code\P2P_API_Test\script\test_investment_manage.py", line 29, in test01_investment
+    self.assertEqual(status, response.json().get("status"))
+AssertionError: 200 != 100
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt4.2' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test01_investment_1_15851779031</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt4.2')" >
+        pass</a>
+
+    <div id='div_pt4.2' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt4.2').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt4.2: {"status":100,"description":"不是正确的金额"}
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft4.3' class='none'>
+    <td class='failCase'><div class='testcase'>test01_investment_2_15851779031</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft4.3')" >
+        fail</a>
+
+    <div id='div_ft4.3' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft4.3').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft4.3: {"status":100,"description":"可用余额不足!"}
+Traceback (most recent call last):
+  File "C:\Program Files\python37\lib\site-packages\parameterized\parameterized.py", line 533, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "C:\Work\SoftwareTest\4-python\code\P2P_API_Test\script\test_investment_manage.py", line 33, in test01_investment
+    self.assertEqual(description, response.json().get("description"))
+AssertionError: '投资密码不能为空' != '可用余额不足!'
+- 投资密码不能为空
++ 可用余额不足!
+
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt4.4' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test01_investment_3_15851779031</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt4.4')" >
+        pass</a>
+
+    <div id='div_pt4.4' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt4.4').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt4.4: {"status":100,"description":"投标金额不能超过最高投标金额"}
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft4.5' class='none'>
+    <td class='errorCase'><div class='testcase'>test02_get_third_party_investment</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft4.5')" >
+        error</a>
+
+    <div id='div_ft4.5' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft4.5').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft4.5: Traceback (most recent call last):
+  File "C:\Work\SoftwareTest\4-python\code\P2P_API_Test\script\test_investment_manage.py", line 39, in test02_get_third_party_investment
+    data = utils.get_third_party_data(response)
+  File "C:\Work\SoftwareTest\4-python\code\P2P_API_Test\utils.py", line 70, in get_third_party_data
+    form = response.json().get("description").get("form")
+AttributeError: 'str' object has no attribute 'get'
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt4.6' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test03_get_tender_list_0_15851779031</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt4.6')" >
+        pass</a>
+
+    <div id='div_pt4.6' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt4.6').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt4.6: {"recover_amount_yes_total":0,"isStartTime":"no","epage":6,"recover_amount_total":0,"recover_amount_wait_total":0,"page":1,"total_pages":0,"tender_amount_total":0,"items":[],"total_items":0,"isCert":"2"}
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt4.7' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test03_get_tender_list_1_15851779031</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt4.7')" >
+        pass</a>
+
+    <div id='div_pt4.7' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt4.7').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt4.7: {"recover_amount_yes_total":0,"isStartTime":"yes","epage":6,"recover_amount_total":0,"recover_amount_wait_total":0,"page":1,"total_pages":0,"tender_amount_total":0,"items":[],"total_items":0,"isCert":"2"}
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt4.8' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test03_get_tender_list_2_15851779031</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt4.8')" >
+        pass</a>
+
+    <div id='div_pt4.8' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt4.8').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt4.8: {"recover_amount_yes_total":0,"isStartTime":"no","epage":6,"recover_amount_total":0,"recover_amount_wait_total":0,"page":1,"total_pages":0,"tender_amount_total":0,"items":[],"total_items":0,"isCert":"2"}
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt4.9' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test03_get_tender_list_3_15851779031</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt4.9')" >
+        pass</a>
+
+    <div id='div_pt4.9' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt4.9').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt4.9: {"recover_amount_yes_total":0,"isStartTime":"yes","epage":6,"recover_amount_total":0,"recover_amount_wait_total":0,"page":1,"total_pages":0,"tender_amount_total":0,"items":[],"total_items":0,"isCert":"2"}
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='failClass'>
+    <td>script.test_bidding_process.TestBiddingProcess</td>
+    <td>6</td>
+    <td>3</td>
+    <td>3</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c5',6)">Detail</a></td>
+</tr>
+
+<tr id='ft5.1' class='none'>
+    <td class='failCase'><div class='testcase'>test01_register</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft5.1')" >
+        fail</a>
+
+    <div id='div_ft5.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft5.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft5.1: {"status":200,"description":"短信发送成功"}
+{"status":100,"description":"手机已存在!"}
+Traceback (most recent call last):
+  File "C:\Work\SoftwareTest\4-python\code\P2P_API_Test\script\test_bidding_process.py", line 37, in test01_register
+    utils.assert_utils(self, response, 200, 200, "注册成功")
+  File "C:\Work\SoftwareTest\4-python\code\P2P_API_Test\utils.py", line 62, in assert_utils
+    self.assertEqual(status, response.json().get("status"))
+AssertionError: 200 != 100
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt5.2' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test02_get_login</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt5.2')" >
+        pass</a>
+
+    <div id='div_pt5.2' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt5.2').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt5.2: {"status":200,"description":"登录成功"}
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt5.3' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test03_get_certified</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt5.3')" >
+        pass</a>
+
+    <div id='div_pt5.3' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt5.3').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt5.3: {"status":200,"data":{"card_id":"350****044","realname":"君**"},"description":"提交成功!"}
+{"is_email_open":"-1","lastlogin_time":"1645606292","group_status":"","is_auth_user":"-1","is_realname_open":"2","is_corp":"-1","business_license":"","card_id":"350****044","realname":"君**","isCert":"2","realname_card":"1","pay_pwd":"","phone":"158****9030","realname_status":"-2","trustType":"chinapnr","pwd":"1","email":"","is_trust":"-1"}
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt5.4' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test04_account_open</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt5.4')" >
+        pass</a>
+
+    <div id='div_pt5.4' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt5.4').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt5.4: {"status":200,"description":{"form":"\u003cform name\u003d\u0027easypaysubmit\u0027 id\u003d\u0027easypaysubmit\u0027 target\u003d\u0027_blank\u0027 method\u003d\u0027post\u0027 action\u003d\u0027http://121.43.169.97:8000/muser/publicRequests\u0027\u003e\u003cinput name\u003d\u0027Version\u0027 type\u003d\u0027hidden\u0027 value\u003d\u002710\u0027/\u003e\u003cinput name\u003d\u0027CmdId\u0027 type\u003d\u0027hidden\u0027 value\u003d\u0027UserRegister\u0027/\u003e\u003cinput name\u003d\u0027MerCustId\u0027 type\u003d\u0027hidden\u0027 value\u003d\u00276000060007313892\u0027/\u003e\u003cinput name\u003d\u0027BgRetUrl\u0027 type\u003d\u0027hidden\u0027 value\u003d\u0027https://www.baidu.com/\u0027/\u003e\u003cinput name\u003d\u0027RetUrl\u0027 type\u003d\u0027hidden\u0027 value\u003d\u0027http://user-p2p-test.itheima.net/trust/chinapnr/register/return/22022316513260874705\u0027/\u003e\u003cinput name\u003d\u0027UsrId\u0027 type\u003d\u0027hidden\u0027 value\u003d\u0027\u0027/\u003e\u003cinput name\u003d\u0027UsrName\u0027 type\u003d\u0027hidden\u0027 value\u003d\u0027\u0027/\u003e\u003cinput name\u003d\u0027IdType\u0027 type\u003d\u0027hidden\u0027 value\u003d\u002700\u0027/\u003e\u003cinput name\u003d\u0027IdNo\u0027 type\u003d\u0027hidden\u0027 value\u003d\u0027350781196403075044\u0027/\u003e\u003cinput name\u003d\u0027UsrMp\u0027 type\u003d\u0027hidden\u0027 value\u003d\u002715851779030\u0027/\u003e\u003cinput name\u003d\u0027UsrEmail\u0027 type\u003d\u0027hidden\u0027 value\u003d\u0027\u0027/\u003e\u003cinput name\u003d\u0027MerPriv\u0027 type\u003d\u0027hidden\u0027 value\u003d\u002722022316513260874705\u0027/\u003e\u003cinput name\u003d\u0027ChkValue\u0027 type\u003d\u0027hidden\u0027 value\u003d\u0027-101\u0027/\u003e\u003cinput name\u003d\u0027CharSet\u0027 type\u003d\u0027hidden\u0027 value\u003d\u0027UTF-8\u0027/\u003e\u003c/form\u003e\u003cscript\u003edocument.forms[\u0027easypaysubmit\u0027].submit();\u003c/script\u003e"}}
+['http://121.43.169.97:8000/muser/publicRequests', {'Version': '10', 'CmdId': 'UserRegister', 'MerCustId': '6000060007313892', 'BgRetUrl': 'https://www.baidu.com/', 'RetUrl': 'http://user-p2p-test.itheima.net/trust/chinapnr/register/return/22022316513260874705', 'UsrId': "'/&gt;&lt;input name='UsrName' type='hidden' value='", 'IdType': '00', 'IdNo': '350781196403075044', 'UsrMp': '15851779030', 'UsrEmail': "'/&gt;&lt;input name='MerPriv' type='hidden' value='22022316513260874705", 'ChkValue': '-101', 'CharSet': 'UTF-8'}]
+UserRegister OK
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft5.5' class='none'>
+    <td class='failCase'><div class='testcase'>test05_get_recharge</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft5.5')" >
+        fail</a>
+
+    <div id='div_ft5.5' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft5.5').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft5.5: {"status":100}
+Traceback (most recent call last):
+  File "C:\Work\SoftwareTest\4-python\code\P2P_API_Test\script\test_bidding_process.py", line 81, in test05_get_recharge
+    self.assertEqual(200, response.json().get("status"))
+AssertionError: 200 != 100
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft5.6' class='none'>
+    <td class='failCase'><div class='testcase'>test06_bidding_progress</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft5.6')" >
+        fail</a>
+
+    <div id='div_ft5.6' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft5.6').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft5.6: {"status":100,"description":"可用余额不足!"}
+Traceback (most recent call last):
+  File "C:\Work\SoftwareTest\4-python\code\P2P_API_Test\script\test_bidding_process.py", line 96, in test06_bidding_progress
+    self.assertEqual(200, response.json().get("status"))
+AssertionError: 200 != 100
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='total_row'>
+    <td>Total</td>
+    <td>51</td>
+    <td>37</td>
+    <td>12</td>
+    <td>2</td>
+    <td>&nbsp;</td>
+</tr>
+</table>
+
+<div id='ending'>&nbsp;</div>
+
+</body>
+</html>

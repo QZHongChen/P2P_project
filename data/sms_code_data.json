@@ -1,0 +1,36 @@
+[
+  {
+    "status_code":200,
+    "status":200,
+    "description":"短信发送成功",
+    "phone": "15851779000",
+    "imgVerifyCode": 8888
+  },
+  {
+    "status_code":200,
+    "status":100,
+    "description":"图片验证码错误",
+    "phone": "15851779000",
+    "imgVerifyCode": 8889
+  },
+  {
+    "status_code":200,
+    "status":100,
+    "phone": "",
+    "imgVerifyCode": 8889
+  },
+  {
+    "status_code":200,
+    "status":100,
+    "description":"图片验证码错误",
+    "phone": "15851779000",
+    "imgVerifyCode": ""
+  },
+  {
+    "status_code":200,
+    "status":100,
+    "description":"图片验证码错误",
+    "phone": "15851779000",
+    "imgVerifyCode": null
+  }
+]
