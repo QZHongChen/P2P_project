@@ -16,7 +16,7 @@ suite.addTest(unittest.makeSuite(TestInvestmentManage))
 suite.addTest(unittest.makeSuite(TestBiddingProcess))
 
 # fileName = config.BASE_DIR + "/report/report{}.html".format(time.strftime("%Y%m%d-%H%M%S"))
-fileName = config.BASE_DIR + "/report/report{}.html"
+fileName = config.BASE_DIR + "/report/report.html"
 with open(fileName, "wb") as f:
     runner = HTMLTestRunner(f, title="金融项目测试报告")
     runner.run(suite)
